@@ -40,14 +40,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tbMemo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btImageopen = new System.Windows.Forms.Button();
+            this.btImageclear = new System.Windows.Forms.Button();
             this.pbimge = new System.Windows.Forms.PictureBox();
             this.btAdd = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btcChange = new System.Windows.Forms.Button();
+            this.btClear = new System.Windows.Forms.Button();
+            this.btSave = new System.Windows.Forms.Button();
+            this.btOpen = new System.Windows.Forms.Button();
             this.dgvCarData = new System.Windows.Forms.DataGridView();
             this.rbsonota = new System.Windows.Forms.RadioButton();
             this.rbsubaru = new System.Windows.Forms.RadioButton();
@@ -56,7 +56,9 @@
             this.rbgaisya = new System.Windows.Forms.RadioButton();
             this.gbMaker = new System.Windows.Forms.GroupBox();
             this.ofdOpenImage = new System.Windows.Forms.OpenFileDialog();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btFinish = new System.Windows.Forms.Button();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pbimge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarData)).BeginInit();
             this.gbMaker.SuspendLayout();
@@ -124,6 +126,7 @@
             this.dtDay.Name = "dtDay";
             this.dtDay.Size = new System.Drawing.Size(200, 19);
             this.dtDay.TabIndex = 6;
+            this.dtDay.Value = new System.DateTime(2020, 7, 9, 0, 0, 0, 0);
             // 
             // cbAuthor
             // 
@@ -167,25 +170,25 @@
             this.label7.TabIndex = 11;
             this.label7.Text = "画像：";
             // 
-            // button1
+            // btImageopen
             // 
-            this.button1.Location = new System.Drawing.Point(571, 28);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "開く";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btImageopen.Location = new System.Drawing.Point(571, 28);
+            this.btImageopen.Name = "btImageopen";
+            this.btImageopen.Size = new System.Drawing.Size(75, 23);
+            this.btImageopen.TabIndex = 12;
+            this.btImageopen.Text = "開く";
+            this.btImageopen.UseVisualStyleBackColor = true;
+            this.btImageopen.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btImageclear
             // 
-            this.button2.Location = new System.Drawing.Point(677, 28);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "削除";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btImageclear.Location = new System.Drawing.Point(677, 28);
+            this.btImageclear.Name = "btImageclear";
+            this.btImageclear.Size = new System.Drawing.Size(75, 23);
+            this.btImageclear.TabIndex = 13;
+            this.btImageclear.Text = "削除";
+            this.btImageclear.UseVisualStyleBackColor = true;
+            this.btImageclear.Click += new System.EventHandler(this.button2_Click);
             // 
             // pbimge
             // 
@@ -207,44 +210,45 @@
             this.btAdd.UseVisualStyleBackColor = true;
             this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
-            // button4
+            // btcChange
             // 
-            this.button4.Location = new System.Drawing.Point(606, 259);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 16;
-            this.button4.Text = "修正";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btcChange.Location = new System.Drawing.Point(606, 259);
+            this.btcChange.Name = "btcChange";
+            this.btcChange.Size = new System.Drawing.Size(75, 23);
+            this.btcChange.TabIndex = 16;
+            this.btcChange.Text = "修正";
+            this.btcChange.UseVisualStyleBackColor = true;
+            this.btcChange.Click += new System.EventHandler(this.btcChange_Click);
             // 
-            // button5
+            // btClear
             // 
-            this.button5.Location = new System.Drawing.Point(713, 259);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 17;
-            this.button5.Text = "削除";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btClear.Location = new System.Drawing.Point(713, 259);
+            this.btClear.Name = "btClear";
+            this.btClear.Size = new System.Drawing.Size(75, 23);
+            this.btClear.TabIndex = 17;
+            this.btClear.Text = "削除";
+            this.btClear.UseVisualStyleBackColor = true;
+            this.btClear.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button7
+            // btSave
             // 
-            this.button7.Location = new System.Drawing.Point(25, 432);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 19;
-            this.button7.Text = "保存";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.btSave.Location = new System.Drawing.Point(25, 432);
+            this.btSave.Name = "btSave";
+            this.btSave.Size = new System.Drawing.Size(75, 23);
+            this.btSave.TabIndex = 19;
+            this.btSave.Text = "保存";
+            this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.button7_Click);
             // 
-            // button6
+            // btOpen
             // 
-            this.button6.Location = new System.Drawing.Point(25, 363);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 20;
-            this.button6.Text = "開く";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btOpen.Location = new System.Drawing.Point(25, 363);
+            this.btOpen.Name = "btOpen";
+            this.btOpen.Size = new System.Drawing.Size(75, 23);
+            this.btOpen.TabIndex = 20;
+            this.btOpen.Text = "開く";
+            this.btOpen.UseVisualStyleBackColor = true;
+            this.btOpen.Click += new System.EventHandler(this.btOpen_Click);
             // 
             // dgvCarData
             // 
@@ -257,6 +261,7 @@
             this.dgvCarData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCarData.Size = new System.Drawing.Size(680, 160);
             this.dgvCarData.TabIndex = 21;
+            this.dgvCarData.Click += new System.EventHandler(this.dgvCarData_Click);
             // 
             // rbsonota
             // 
@@ -332,32 +337,36 @@
             // 
             this.ofdOpenImage.FileName = "openFileDialog1";
             // 
-            // button3
+            // btFinish
             // 
-            this.button3.Location = new System.Drawing.Point(713, 495);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 28;
-            this.button3.Text = "終了";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btFinish.Location = new System.Drawing.Point(713, 495);
+            this.btFinish.Name = "btFinish";
+            this.btFinish.Size = new System.Drawing.Size(75, 23);
+            this.btFinish.TabIndex = 28;
+            this.btFinish.Text = "終了";
+            this.btFinish.UseVisualStyleBackColor = true;
+            this.btFinish.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 518);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btFinish);
             this.Controls.Add(this.gbMaker);
             this.Controls.Add(this.dgvCarData);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btOpen);
+            this.Controls.Add(this.btSave);
+            this.Controls.Add(this.btClear);
+            this.Controls.Add(this.btcChange);
             this.Controls.Add(this.btAdd);
             this.Controls.Add(this.pbimge);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btImageclear);
+            this.Controls.Add(this.btImageopen);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tbMemo);
             this.Controls.Add(this.label6);
@@ -371,6 +380,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbimge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarData)).EndInit();
             this.gbMaker.ResumeLayout(false);
@@ -394,14 +404,14 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbMemo;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btImageopen;
+        private System.Windows.Forms.Button btImageclear;
         private System.Windows.Forms.PictureBox pbimge;
         private System.Windows.Forms.Button btAdd;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btcChange;
+        private System.Windows.Forms.Button btClear;
+        private System.Windows.Forms.Button btSave;
+        private System.Windows.Forms.Button btOpen;
         private System.Windows.Forms.DataGridView dgvCarData;
         private System.Windows.Forms.RadioButton rbsonota;
         private System.Windows.Forms.RadioButton rbsubaru;
@@ -410,7 +420,9 @@
         private System.Windows.Forms.RadioButton rbgaisya;
         private System.Windows.Forms.GroupBox gbMaker;
         private System.Windows.Forms.OpenFileDialog ofdOpenImage;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btFinish;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
 
