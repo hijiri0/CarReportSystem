@@ -153,6 +153,8 @@ namespace CarReportSystem
             selectedCarr.Picture = pbimge.Image;
             selectedCarr.Author = cbAuthor.Text;
 
+            Clear();
+
             dgvCarData.Refresh();  //データグリッドビューの再描画
         }
 
@@ -252,12 +254,13 @@ namespace CarReportSystem
             //選択したレコードを取り出す
             //データグリッドビューの選択した行のインデックス
             //BindingListのデータ取得する
-            CarReport selectedCar = _CarReports[dgvCarData.CurrentRow.Index];
+            CarReport selectedCarr = _CarReports[dgvCarData.CurrentRow.Index];
 
-            cbName.Text = selectedCar.Name;
-            cbAuthor.Text = selectedCar.Author;
-            pbimge.Image = selectedCar.Picture;
-            tbMemo.Text = selectedCar.Report;
+            cbName.Text = selectedCarr.Name;
+            cbAuthor.Text = selectedCarr.Author;
+            pbimge.Image = selectedCarr.Picture;
+            tbMemo.Text = selectedCarr.Report;
+           
         }
     }
 }
