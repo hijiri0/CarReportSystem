@@ -201,29 +201,38 @@ namespace CarReportSystem
 
         private void btOpen_Click(object sender, EventArgs e)
         {
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                using (FileStream fs = new FileStream(openFileDialog.FileName, FileMode.Open))
-                {
-                    try
-                    {
-                        BinaryFormatter formatter = new BinaryFormatter();
+            #region
+            //if (openFileDialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    using (FileStream fs = new FileStream(openFileDialog.FileName, FileMode.Open))
+            //    {
+            //        try
+            //        {
+            //            BinaryFormatter formatter = new BinaryFormatter();
 
-                        _CarReports = (BindingList<CarReport>)formatter.Deserialize(fs);
-                        dgvCarData.DataSource = _CarReports;
+            //            _CarReports = (BindingList<CarReport>)formatter.Deserialize(fs);
+            //            dgvCarData.DataSource = _CarReports;
 
-                    }
-                    catch (SerializationException se)
-                    {
-                        Console.WriteLine("Failed to deserialize. Reason: " + se.Message);
-                        throw;
-                    }
-                }
-            }
+            //        }
+            //        catch (SerializationException se)
+            //        {
+            //            Console.WriteLine("Failed to deserialize. Reason: " + se.Message);
+            //            throw;
+            //        }
+            //    }
+            //}
+            #endregion
+
+            this.carReportTableAdapter.Fill(this.infosys202031DataSet.CarReport);
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: このコード行はデータを 'infosys202031DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            //this.carReportTableAdapter.Fill(this.infosys202031DataSet.CarReport);
+           
+
             btImageclear.Enabled = false;
             btcChange.Enabled = false;
             btClear.Enabled = false;
@@ -247,20 +256,40 @@ namespace CarReportSystem
 
         private void dgvCarData_Click(object sender, EventArgs e)
         {
+            var test = dgvCarData.CurrentRow.Cells[1].Value;
 
-            if (dgvCarData.CurrentRow == null)
-                return;
+            ////if (dgvCarData.CurrentRow == null)
+            ////    return;
 
-            //選択したレコードを取り出す
-            //データグリッドビューの選択した行のインデックス
-            //BindingListのデータ取得する
-            CarReport selectedCarr = _CarReports[dgvCarData.CurrentRow.Index];
+            //////選択したレコードを取り出す
+            //////データグリッドビューの選択した行のインデックス
+            //////BindingListのデータ取得する
+            ////CarReport selectedCarr = _CarReports[dgvCarData.CurrentRow.Index];
 
-            cbName.Text = selectedCarr.Name;
-            cbAuthor.Text = selectedCarr.Author;
-            pbimge.Image = selectedCarr.Picture;
-            tbMemo.Text = selectedCarr.Report;
+            ////cbName.Text = selectedCarr.Name;
+            ////cbAuthor.Text = selectedCarr.Author;
+            ////pbimge.Image = selectedCarr.Picture;
+            ////tbMemo.Text = selectedCarr.Report;
            
         }
+
+        private void carReportBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.carReportBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202031DataSet);
+
+        }
+
+        private void carReportBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.carReportBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202031DataSet);
+
+        }
+
+     
+        
     }
 }
