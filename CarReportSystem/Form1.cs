@@ -25,7 +25,7 @@ namespace CarReportSystem
         public Form1()
         {
             InitializeComponent();
-            dgvCarData.DataSource = _CarReports;
+            //dgvCarData.DataSource = _CarReports;
         }
 
         private void btAdd_Click(object sender, EventArgs e)
@@ -225,13 +225,15 @@ namespace CarReportSystem
 
             this.carReportTableAdapter.Fill(this.infosys202031DataSet.CarReport);
 
+            dgvCarData.Columns[0].Visible = false;//idを非表示にする
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: このコード行はデータを 'infosys202031DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             //this.carReportTableAdapter.Fill(this.infosys202031DataSet.CarReport);
-           
+
 
             btImageclear.Enabled = false;
             btcChange.Enabled = false;
@@ -241,7 +243,6 @@ namespace CarReportSystem
         {
             if (_CarReports.Count == 0)
             {
-               
                 btcChange.Enabled = false;
                 btClear.Enabled = false;
             }
@@ -256,11 +257,13 @@ namespace CarReportSystem
 
         private void dgvCarData_Click(object sender, EventArgs e)
         {
-            var test = dgvCarData.CurrentRow.Cells[1].Value;
+            //var test = dgvCarData.CurrentRow.Cells[2].Value;
 
+            //選択したレコード（行）の、インデックスで指定した項目を取り出す
+            string maker = dgvCarData.CurrentRow.Cells[3].Value.ToString();
             ////if (dgvCarData.CurrentRow == null)
             ////    return;
-
+            setRadioButtonMaker((string) maker);
             //////選択したレコードを取り出す
             //////データグリッドビューの選択した行のインデックス
             //////BindingListのデータ取得する
@@ -270,7 +273,7 @@ namespace CarReportSystem
             ////cbAuthor.Text = selectedCarr.Author;
             ////pbimge.Image = selectedCarr.Picture;
             ////tbMemo.Text = selectedCarr.Report;
-           
+
         }
 
         private void carReportBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -281,15 +284,56 @@ namespace CarReportSystem
 
         }
 
-        private void carReportBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        public static Image ByteArrayToImage(byte[]byteDate)
         {
-            this.Validate();
-            this.carReportBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.infosys202031DataSet);
+
+            ImageConverter imagconv = new ImageConverter();
+            Image img = (Image)imagconv.ConvertFrom(byteDate);
+            return img;
+        }
+        public static byte[]ImageToByteArray(Image img)
+        {
+            ImageConverter imgconv = new ImageConverter();
+            byte[] byteDate = (byte[])imgconv.ConvertTo(img, typeof(byte[]));
+            return byteDate;
 
         }
 
-     
-        
+        private void setRadioButtonMaker(string carMaker)
+        {
+            switch(carMaker)
+            {
+                case "トヨタ":
+                    rbtoyota.Checked = true;
+                    break;
+
+                case "日産":
+                    rbnisan.Checked = true;
+                    break;
+
+                case "ホンダ":
+                    rbhonda.Checked = true;
+                    break;
+
+                case "スバル":
+                    rbsubaru.Checked = true;
+                    break;
+                case "外車":
+                    rbgaisya.Checked = true;
+                    break;
+
+                case "その他":
+                    rbsonota.Checked = true;
+                    break;
+            }
+        }
+
+        private void dgvCarData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string maker = dgvCarData.CurrentRow.Cells[3].Value.ToString();
+            ////if (dgvCarData.CurrentRow == null)
+            ////    return;
+            setRadioButtonMaker((string)maker);
+        }
     }
 }
