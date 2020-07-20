@@ -144,18 +144,18 @@ namespace CarReportSystem
 
         private void btcChange_Click(object sender, EventArgs e)
         {
-            CarReport selectedCarr = _CarReports[dgvCarData.CurrentRow.Index];
+            dgvCarData.CurrentRow.Cells[2].Value = cbAuthor.Text;
+            dgvCarData.CurrentRow.Cells[4].Value = cbName.Text;
+            dgvCarData.CurrentRow.Cells[5].Value = tbMemo.Text;
+            dgvCarData.CurrentRow.Cells[6].Value = pbimge.Image;
 
-            selectedCarr.CreatedData = dtDay.Value;
-            selectedCarr.Name = cbName.Text;
-            selectedCarr.Maker = GetCarMaker();
-            selectedCarr.Report = tbMemo.Text;
-            selectedCarr.Picture = pbimge.Image;
-            selectedCarr.Author = cbAuthor.Text;
+           
 
-            Clear();
 
-            dgvCarData.Refresh();  //データグリッドビューの再描画
+
+            this.Validate();
+            this.carReportBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202031DataSet);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -235,9 +235,9 @@ namespace CarReportSystem
             //this.carReportTableAdapter.Fill(this.infosys202031DataSet.CarReport);
 
 
-            btImageclear.Enabled = false;
-            btcChange.Enabled = false;
-            btClear.Enabled = false;
+            //btImageclear.Enabled = false;
+            //btcChange.Enabled = false;
+            //btClear.Enabled = false;
         }
         void Errorchecking()
         {
@@ -260,7 +260,7 @@ namespace CarReportSystem
             //var test = dgvCarData.CurrentRow.Cells[2].Value;
 
             //選択したレコード（行）の、インデックスで指定した項目を取り出す
-            string maker = dgvCarData.CurrentRow.Cells[3].Value.ToString();
+            var maker = dgvCarData.CurrentRow.Cells[3].Value.ToString();
             ////if (dgvCarData.CurrentRow == null)
             ////    return;
             setRadioButtonMaker((string) maker);
@@ -328,12 +328,19 @@ namespace CarReportSystem
             }
         }
 
-        private void dgvCarData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvCarData_Click_1(object sender, EventArgs e)
         {
-            string maker = dgvCarData.CurrentRow.Cells[3].Value.ToString();
-            ////if (dgvCarData.CurrentRow == null)
-            ////    return;
+
+            cbName.Text = dgvCarData.CurrentRow.Cells[4].Value.ToString();
+            cbAuthor.Text = dgvCarData.CurrentRow.Cells[2].Value.ToString();
+            tbMemo.Text = dgvCarData.CurrentRow.Cells[5].Value.ToString();
+            
+
+            var maker = dgvCarData.CurrentRow.Cells[3].Value.ToString();
             setRadioButtonMaker((string)maker);
+           
+
+
         }
     }
 }

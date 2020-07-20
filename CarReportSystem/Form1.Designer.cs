@@ -533,7 +533,7 @@
             this.dgvCarData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCarData.Size = new System.Drawing.Size(747, 292);
             this.dgvCarData.TabIndex = 29;
-            this.dgvCarData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCarData_CellContentClick);
+            this.dgvCarData.Click += new System.EventHandler(this.dgvCarData_Click_1);
             // 
             // dataGridViewTextBoxColumn1
             // 
